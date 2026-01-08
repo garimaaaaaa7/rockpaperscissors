@@ -5,6 +5,10 @@ const msg=document.querySelector("#msg")
 const msgg=document.querySelector(".msgg")
 const ucore=document.querySelector("#uscore")
 const cscore=document.querySelector("#cscore")
+const userresult=document.querySelector("#uchoice")
+const cresult=document.querySelector("#cchoice")
+const body=document.querySelector("body")
+
 const draw=()=>
 {
     console.log("its a draw")
@@ -23,6 +27,7 @@ if (uwin) {
         msgg.style.color="white"
         usercore++;
         ucore.innerText=usercore
+        
 
 }else{
     console.log("upps!you lose")
@@ -31,7 +36,7 @@ if (uwin) {
         msgg.style.color="white"
         compcore++;
         cscore.innerText=compcore;
-            
+       
 }
 }
     const cchoice=()=>{
@@ -40,9 +45,14 @@ if (uwin) {
     return options[rindex]
 }
     const playgame=(choiceid)=>{
-    console.log("userchoice is",choiceid)
+    const uchoice=choiceid
+
+    console.log("userchoice is",uchoice)
+   
     const cochoice=cchoice()
         console.log("comp choice is",cochoice)
+         cresult.innerText=cochoice
+         userresult.innerText=uchoice
 
         if (choiceid===cochoice) {
 draw()
@@ -64,4 +74,22 @@ choices.forEach((choice)=>{
         const choiceid= choice.getAttribute("id")
         playgame(choiceid)
     })
+})
+
+let btn2=document.querySelector("#btn2")
+let mode="light"
+
+btn2.addEventListener("click",()=>{
+    if (mode==="light") {
+    mode="dark"
+    body.style.backgroundColor="black"
+    body.style.color="white"
+
+}
+else{
+    mode="light"
+      body.style.backgroundColor="white"
+      body.style.color="black"
+}
+    console.log(mode)
 })
